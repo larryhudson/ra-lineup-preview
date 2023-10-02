@@ -1,0 +1,37 @@
+---
+import Layout from "@src/components/Layout.astro";
+import Dump from "@src/components/Dump.astro";
+
+import {getSearchResults} from "@src/utils/soundcloud"
+
+let searchResults = [];
+
+const searchQuery = Astro.url.searchParams.get('q');
+searchResults = await getSearchResults({searchQuery});
+
+---
+
+<Layout>
+  <h1>Search</h1>
+  <form>
+    <label>Search query
+      <input name="q" value={searchQuery} />
+    </label>
+    <button>Search</button>
+  </form>
+
+  <h2>Search results</h2>
+
+  <ul>
+    {searchResults.map(result => (
+    <li>
+    <a href={result.permalink_url}>
+    {result.title}
+    </a>
+    <br />
+    <span>User: <a href={result.user.permalink_url}>{result.user.username}</a></span>
+    </li>
+    ))}
+  </ul>
+  <Dump data={searchResults} />
+</Layout>
