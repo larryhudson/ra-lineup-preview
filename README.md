@@ -10,6 +10,7 @@
 ## Finding mixes
 
 - Resident Advisor DJ profiles (for example, [Chloe Caillet](https://ra.co/dj/chloecaillet)) sometimes have direct links to Soundcloud profiles. We can use that.
+- We can also piggyback off Resident Advisor's graphql API - if you browse around and look at your network tab, it looks pretty easy to fetch related artists, venues, events etc.
 - We can also just search Soundcloud. I had a look in the network tab and found this URL: https://api-v2.soundcloud.com/search/tracks?q=Choe%20Caillet&variant_ids=2622&filter.duration=epic&facet=genre&user_id=[MY_USER_ID_HERE]&client_id=[MY_CLIENT_ID_HERE]&limit=20&offset=0&linked_partitioning=1&app_locale=en
 - From there, we can use yt-dlp to download mixes
 
