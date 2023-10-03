@@ -1,7 +1,7 @@
 export async function getSearchResults({ searchQuery }) {
   // set these in an environment variable?
-  const userId = import.meta.env.SPOTIFY_USER_ID;
-  const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
+  const userId = import.meta.env.SOUNDCLOUD_USER_ID;
+  const clientId = import.meta.env.SOUNDCLOUD_CLIENT_ID;
   // construct the search url
   const searchUrl = new URL("https://api-v2.soundcloud.com/search/tracks");
   searchUrl.searchParams.set("q", searchQuery);
