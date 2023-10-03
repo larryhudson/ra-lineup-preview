@@ -1,13 +1,17 @@
 ---
-const {data} = Astro.props;
+const { data } = Astro.props;
 ---
-    <li>
-    <a href={data.permalink_url}>
+
+<li>
+  <a href={data.permalink_url}>
     {data.title}
-    </a>
-    <br />
-    <span>User: <a href={data.user.permalink_url}>{data.user.username}</a></span>
-    <form hx-post="/soundcloud/download">
-      <button name="event-url" value={data.permalink_url}>Download</button>
-    </form>
-    </li>
+  </a>
+  <br />
+  <span>User: <a href={data.user.permalink_url}>{data.user.username}</a></span>
+  <form hx-post="/soundcloud/download">
+    <button name="event-url" value={data.permalink_url}>Download</button>
+  </form>
+  <form hx-get="/soundcloud/embed" hx-select="iframe">
+    <button name="id" value={data.id}>Preview</button>
+  </form>
+</li>

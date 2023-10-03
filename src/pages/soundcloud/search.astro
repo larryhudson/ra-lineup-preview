@@ -3,19 +3,19 @@ import Layout from "@src/components/Layout.astro";
 import Dump from "@src/components/Dump.astro";
 import SoundcloudMix from "@src/components/SoundcloudMix.astro";
 
-import {getSearchResults} from "@src/utils/soundcloud"
+import { getSearchResults } from "@src/utils/soundcloud";
 
 let searchResults = [];
 
-const searchQuery = Astro.url.searchParams.get('q');
-searchResults = await getSearchResults({searchQuery});
-
+const searchQuery = Astro.url.searchParams.get("q");
+searchResults = await getSearchResults({ searchQuery });
 ---
 
 <Layout>
   <h1>Search</h1>
   <form>
-    <label>Search query
+    <label
+      >Search query
       <input name="q" value={searchQuery} />
     </label>
     <button>Search</button>
@@ -23,10 +23,13 @@ searchResults = await getSearchResults({searchQuery});
 
   <h2>Search results</h2>
 
-  <ul>
-    {searchResults.map(result => (
-    <SoundcloudMix data={result} /> 
-    ))}
-  </ul>
-  <Dump data={searchResults} />
+  <details>
+    <summary>Search results for {searchQuery}</summary>
+    <ul>
+      {searchResults.map((result) => <SoundcloudMix data={result} />)}
+      <li>
+        <Dump data={searchResults} />
+      </li>
+    </ul>
+  </details>
 </Layout>

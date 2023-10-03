@@ -32,12 +32,13 @@ export async function getArtistsForEvent(eventUrl) {
   console.log(jsonScriptTagJson);
   const artistsArray = jsonScriptTagJson.performer;
   // return the array
-  return artistsArray.map((artist) => {
-    return {
-      name: artist.name,
-      url: artist.url,
-    };
-  });
+  return artistsArray;
+  // return artistsArray.map((artist) => {
+  //  return {
+  //    name: artist.name,
+  //    url: artist.url,
+  //   };
+  // });
 }
 
 export async function getSoundcloudUrlForArtist(artistUrl) {
