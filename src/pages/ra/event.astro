@@ -1,0 +1,25 @@
+---
+import Layout from "@src/components/Layout.astro";
+const eventUrl = Astro.url.searchParams.get('event-url');
+
+import {getArtistsForEvent} from "@src/utils/ra";
+
+const artists = await getArtistsForEvent(eventUrl);
+---
+
+<Layout>
+
+<div id="event">
+  <ul>
+    {artists.map(artist => (
+    <li><a href={artist.url}>{artist.name}</a>
+    <form hx-get="/soundcloud/search/" hx-select="ul">
+      <button name="q" value={artist.name}>Search on Soundcloud</button>
+    </form>
+    </li>
+    ))}
+  </ul>
+
+</div>
+
+</Layout>

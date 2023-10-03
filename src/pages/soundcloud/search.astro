@@ -1,6 +1,7 @@
 ---
 import Layout from "@src/components/Layout.astro";
 import Dump from "@src/components/Dump.astro";
+import SoundcloudMix from "@src/components/SoundcloudMix.astro";
 
 import {getSearchResults} from "@src/utils/soundcloud"
 
@@ -24,13 +25,7 @@ searchResults = await getSearchResults({searchQuery});
 
   <ul>
     {searchResults.map(result => (
-    <li>
-    <a href={result.permalink_url}>
-    {result.title}
-    </a>
-    <br />
-    <span>User: <a href={result.user.permalink_url}>{result.user.username}</a></span>
-    </li>
+    <SoundcloudMix data={result} /> 
     ))}
   </ul>
   <Dump data={searchResults} />
