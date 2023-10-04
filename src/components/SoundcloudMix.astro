@@ -8,9 +8,6 @@ const { data } = Astro.props;
   </a>
   <br />
   <span>User: <a href={data.user.permalink_url}>{data.user.username}</a></span>
-  <form hx-post="/soundcloud/download">
-    <button name="event-url" value={data.permalink_url}>Download</button>
-  </form>
   <form hx-get="/soundcloud/embed" hx-select="iframe">
     <button name="id" value={data.id}>Preview</button>
   </form>
